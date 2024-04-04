@@ -5,9 +5,10 @@
 var CanvasKit = null;
 var cdn = "https://storage.googleapis.com/skia-cdn/misc/";
 
+// "https://unpkg.com/canvaskit-wasm@0.28.0/bin/full/" + file
 const ckLoaded = CanvasKitInit({
     locateFile: (file) =>
-        "https://unpkg.com/canvaskit-wasm@0.28.0/bin/full/" + file
+    "/node_modules/canvaskit-wasm/bin/full/canvaskit.wasm"
 });
 
 const loadLegoJSON = fetch(cdn + "lego_loader.json").then((response) =>
