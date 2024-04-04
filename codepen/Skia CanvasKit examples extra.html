@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed #aaa;
+        }
+
+        #sk_legos,
+        #sk_drinks,
+        #sk_party,
+        #sk_onboarding,
+        #sk_animated_gif {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script src="/node_modules/canvaskit-wasm/bin/canvaskit.js"></script> -->
+    <script src="https://unpkg.com/canvaskit-wasm@0.28.0/bin/full/canvaskit.js"></script>
+    <script src="https://unpkg.com/canvaskit-wasm@0.28.0/textapi_utils.js"></script>
+    <h2> Skottie </h2>
+    <canvas id=sk_legos width=300 height=300></canvas>
+    <canvas id=sk_drinks width=500 height=500></canvas>
+    <canvas id=sk_party width=500 height=500></canvas>
+    <canvas id=sk_onboarding width=500 height=500></canvas>
+    <canvas id=sk_animated_gif width=500 height=500 title='This is an animated gif being animated in Skottie'></canvas>
+
+    <h2> RT Shader </h2>
+    <canvas id=rtshader width=300 height=300></canvas>
+    <canvas id=rtshader2 width=300 height=300></canvas>
+
+    <h2> Particles </h2>
+    <canvas id=particles width=500 height=500></canvas>
+
+    <h2> Paragraph </h2>
+    <canvas id=para1 width=600 height=600></canvas>
+    <canvas id=para2 width=600 height=600 tabindex='-1'></canvas>
+
+    <h2> CanvasKit can serialize/deserialize .skp files</h2>
+    <canvas id=skp width=500 height=500></canvas>
+
+    <h2> 3D perspective transformations </h2>
+    <canvas id=glyphgame width=500 height=500></canvas>
+
+    <h2> Support for extended color spaces </h2>
+    <a href="chrome://flags/#force-color-profile">Force P3 profile</a>
+    <canvas id=colorsupport width=300 height=300></canvas>
+</body>
+<script src="Skia_CanvasKit_examples_extra.html.js"></script>
+
+</html>
