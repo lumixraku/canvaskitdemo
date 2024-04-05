@@ -65,6 +65,7 @@ const runCanvaskitExample = async () => {
     trianglePath.lineTo(550, 100);
     trianglePath.close();
     circlePath.op(trianglePath, PathKit.PathOp.UNION);
+    // Not working
     // const path = PathKit.MakeFromOp(circlePath, trianglePath, PathKit.PathOp.UNION);
     // console.log('path', path.toSVGString())
     
