@@ -1,17 +1,20 @@
 import CanvasKitInit from 'canvaskit-wasm';
+import PathKitInit from 'pathkit-wasm';
 const runCanvaskitExample = async () => {
-    // 传统加载方式
-    // const CanvasKit = await CanvasKitInit({
-    //     locateFile: (file) =>
-    //         // "https://unpkg.com/canvaskit-wasm@0.19.0/bin/" + file
-    //         "/node_modules/canvaskit-wasm/bin/canvaskit.wasm"
-    // });
+    // const response = await fetch("/node_modules/canvaskit-wasm/bin/canvaskit.wasm");
+    // const wasmBinary = await response.arrayBuffer();
+    // // @ts-ignore
+    // const CanvasKit = await CanvasKitInit({ wasmBinary });    
+    // 官方加载方式
+    const CanvasKit = await CanvasKitInit({
+        locateFile: (file: any) => "/node_modules/canvaskit-wasm/bin/" + file
+    });
 
-    // 加载 CanvasKit
-    const response = await fetch("/node_modules/canvaskit-wasm/bin/canvaskit.wasm");
-    const wasmBinary = await response.arrayBuffer();
-    // @ts-ignore
-    const CanvasKit = await CanvasKitInit({ wasmBinary });
+    // 加载 PathKit
+    const PathKit = await PathKitInit({
+        locateFile: (file: any) => '/node_modules/pathkit-wasm/bin/' + file,
+    });
+
 
     // 创建画布
     const surface = CanvasKit.MakeCanvasSurface("canvas");
@@ -49,11 +52,27 @@ const runCanvaskitExample = async () => {
     paint.setColor(CanvasKit.Color(1, 1, 1, 255));
     
 
-    const path = new CanvasKit.Path(); 
-    path.addCircle(100, 100, 80);
+    const circlePath = new CanvasKit.Path(); 
+    circlePath.addCircle(100, 100, 80);
+
+    const rectPath = new CanvasKit.Path();
+    rectPath.addRect(CanvasKit.LTRBRect(350, 0, 450, 100));   
+    circlePath.op(rectPath, PathKit.PathOp.UNION);
+
+    const trianglePath = new CanvasKit.Path();
+    trianglePath.moveTo(650, 0);
+    trianglePath.lineTo(650, 100);
+    trianglePath.lineTo(550, 100);
+    trianglePath.close();
+    circlePath.op(trianglePath, PathKit.PathOp.UNION);
+    // const path = PathKit.MakeFromOp(circlePath, trianglePath, PathKit.PathOp.UNION);
+    // console.log('path', path.toSVGString())
+    
 
     // Create a TextBlob
-    const textBlob = CanvasKit.TextBlob.MakeOnPath('Hello, Canvaskit!', path, font, 0);
+    const elem = document.querySelector('#editor') as HTMLElement;
+    const text = elem?.innerText;
+    const textBlob = CanvasKit.TextBlob.MakeOnPath(text, circlePath, font, 0);
     skCanvas.drawTextBlob(textBlob, 20, 20, paint);
 
     surface.flush();

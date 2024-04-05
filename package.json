@@ -13,6 +13,7 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "canvaskit-wasm": "^0.39.1"
+    "canvaskit-wasm": "^0.39.1",
+    "pathkit-wasm": "^1.0.0"
   }
 }
