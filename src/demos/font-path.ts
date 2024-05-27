@@ -4,7 +4,7 @@ const runCanvaskitExample = async () => {
     // const response = await fetch("/node_modules/canvaskit-wasm/bin/canvaskit.wasm");
     // const wasmBinary = await response.arrayBuffer();
     // // @ts-ignore
-    // const CanvasKit = await CanvasKitInit({ wasmBinary });    
+    // const CanvasKit = await CanvasKitInit({ wasmBinary });
     // 官方加载方式
     const CanvasKit = await CanvasKitInit({
         locateFile: (file: any) => "/node_modules/canvaskit-wasm/bin/" + file
@@ -65,7 +65,7 @@ const runCanvaskitExample = async () => {
     trianglePath.moveTo(650, 0);
     trianglePath.lineTo(650, 100);
     // 注意时针顺序  如果是顺时针, 文字将在 shape 内部
-    trianglePath.lineTo(550, 100); 
+    trianglePath.lineTo(550, 100);
     trianglePath.close();
     path.op(trianglePath, PathKit.PathOp.UNION);
     // Not working
