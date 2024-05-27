@@ -1,10 +1,10 @@
-import CanvasKitInit from 'canvaskit-wasm';
+import CanvasKitInit from 'canvaskit-wasm/bin/profiling/canvaskit.js';
 import * as opentype from 'opentype.js';
 const runCanvaskitExample = async () => {
 
     // 官方加载方式
     const CanvasKit = await CanvasKitInit({
-        locateFile: (file: any) => "/node_modules/canvaskit-wasm/bin/" + file
+        locateFile: (file: any) => "/node_modules/canvaskit-wasm/bin/profiling/" + file
     });
 
 
