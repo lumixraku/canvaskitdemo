@@ -13,5 +13,10 @@ export default defineConfig({
       ],
     },
   },
-  // 其他Vite配置...
+
+  // vitest
+  test: {
+    globals: true,
+    environment: 'happy-dom', // 或者 'jsdom', 根据需求选择
+  }
 });

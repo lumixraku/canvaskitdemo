@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*", "src/global.d.ts"]
+  "include": ["src/**/*", "src/global.d.ts", "public/canvaskit.format.js"]
 }
